@@ -31,13 +31,6 @@ const config = {
 
 
 const template = `
-<% if (jira.releaseVersions && jira.releaseVersions.length) {  %>
-Release version: <%= jira.releaseVersions[0].name -%>
-<% jira.releaseVersions.forEach((release) => { %>
-  * <%= release.projectKey %>: <%= jira.baseUrl + '/projects/' + release.projectKey + '/versions/' + release.id -%>
-<% }); -%>
-<% } %>
-
 <% tickets.all.filter((t) => !t.reverted).forEach((ticket) => { -%>
   * [<%= ticket.key %>](<%= jira.baseUrl + '/browse/' + ticket.key %>) - <%- ticket.fields.summary %>
 <% }); -%>
